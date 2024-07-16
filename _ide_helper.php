@@ -18497,6 +18497,103 @@ namespace Livewire {
             }
     }
 
+namespace WireUi\Facades {
+            /**
+     * 
+     *
+     */        class WireUi {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function components()
+        {
+                        /** @var \WireUi\Support\WireUiSupport $instance */
+                        return $instance->components();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function directives()
+        {
+                        /** @var \WireUi\Support\WireUiSupport $instance */
+                        return $instance->directives();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function component($name)
+        {
+                        /** @var \WireUi\Support\WireUiSupport $instance */
+                        return $instance->component($name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function extractAttributes($property)
+        {
+                        /** @var \WireUi\Support\WireUiSupport $instance */
+                        return $instance->extractAttributes($property);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function alpine($component, $data = [])
+        {
+                        /** @var \WireUi\Support\WireUiSupport $instance */
+                        return $instance->alpine($component, $data);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function toJs($data = [])
+        {
+                        /** @var \WireUi\Support\WireUiSupport $instance */
+                        return $instance->toJs($data);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function wireModel($component, $attributes)
+        {
+                        return \WireUi\Support\WireUiSupport::wireModel($component, $attributes);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function alpineModel($attributes)
+        {
+                        return \WireUi\Support\WireUiSupport::alpineModel($attributes);
+        }
+            }
+    }
+
+namespace Illuminate\Support {
+            /**
+     * 
+     *
+     */        class Arr {
+                    /**
+         * 
+         *
+         * @see \WireUi\Providers\CustomMacros::register()
+         * @param array $classes
+         * @return string 
+         * @static 
+         */        public static function toRecursiveCssClasses($classes)
+        {
+                        return \Illuminate\Support\Arr::toRecursiveCssClasses($classes);
+        }
+            }
+    }
+
 namespace Illuminate\Http {
             /**
      * 
@@ -18600,6 +18697,26 @@ namespace Illuminate\View {
          */        public static function wire($name)
         {
                         return \Illuminate\View\ComponentAttributeBag::wire($name);
+        }
+                    /**
+         * 
+         *
+         * @see \WireUi\Providers\CustomMacros::register()
+         * @param string $name
+         * @return \WireUi\View\Attribute|null 
+         * @static 
+         */        public static function attribute($name)
+        {
+                        return \Illuminate\View\ComponentAttributeBag::attribute($name);
+        }
+                    /**
+         * 
+         *
+         * @see \WireUi\Providers\CustomMacros::register()
+         * @static 
+         */        public static function wireModifiers()
+        {
+                        return \Illuminate\View\ComponentAttributeBag::wireModifiers();
         }
             }
             /**
@@ -22305,6 +22422,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Livewire extends \Livewire\Livewire {}
+            class WireUi extends \WireUi\Facades\WireUi {}
     }
 
 
