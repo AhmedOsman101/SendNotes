@@ -8,8 +8,12 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+Route::middleware(['auth'])->group(function () {
+    Route::view('profile', 'profile')
+        ->name('profile');
 
-require __DIR__.'/auth.php';
+    Route::view('notes', 'notes.index')->name('notes.index');
+});
+
+
+require __DIR__ . '/auth.php';
