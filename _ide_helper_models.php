@@ -16,6 +16,7 @@ namespace App\Models{
  * 
  *
  * @property string $id
+ * @property string $user_id
  * @property string $title
  * @property string $body
  * @property string $send_date
@@ -23,7 +24,7 @@ namespace App\Models{
  * @property int $hearts_count
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User|null $user
+ * @property-read \App\Models\User $user
  * @method static \Database\Factories\NoteFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Note newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Note newQuery()
@@ -36,6 +37,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereSendDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Note whereUserId($value)
  */
 	class Note extends \Eloquent {}
 }

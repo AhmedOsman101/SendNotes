@@ -12,7 +12,7 @@ return new class extends Migration {
         Schema::create('notes', function (Blueprint $table) {
             $table->uuid('id');
 
-            $table->foreignId('user_id')
+            $table->foreignUuid('user_id')
                 ->constrained()
                 ->onDelete('cascade');
 
