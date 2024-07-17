@@ -19,8 +19,6 @@ new class extends Component {
 
     public function submit() {
 
-        dd(gettype($this->send_date));
-
         if ($this->validate()) {
             Note::create([
                 'title' => $this->title,

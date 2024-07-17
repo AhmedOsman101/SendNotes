@@ -20,7 +20,8 @@ class NoteFactory extends Factory {
             'recipient' => fake()->safeEmail(),
             'title' => fake()->bs(),
             'content' => fake()->sentence(),
-            'send_date' => fake()->date()
+            'send_date' => now()->toDateString(),
+            'is_published' => fake()->boolean(75),
         ];
     }
 }
