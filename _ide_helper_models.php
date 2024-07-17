@@ -16,9 +16,10 @@ namespace App\Models{
  * 
  *
  * @property string $id
- * @property string $user_id
+ * @property int $user_id
+ * @property string $recipient
  * @property string $title
- * @property string $body
+ * @property string $content
  * @property string $send_date
  * @property int $is_published
  * @property int $hearts_count
@@ -29,11 +30,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Note newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Note newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Note query()
- * @method static \Illuminate\Database\Eloquent\Builder|Note whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Note whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereHeartsCount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereIsPublished($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Note whereRecipient($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereSendDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Note whereUpdatedAt($value)

@@ -6,13 +6,13 @@ use Livewire\Volt\Component;
 
 new class extends Component {
     #[Validate('required|string|min:3')]
-    public $title;
+    public string $title;
 
     #[Validate('required|string|min:10')]
-    public $content;
+    public string $content;
 
     #[Validate('required|email')]
-    public $recipient;
+    public string $recipient;
 
     #[Validate('required|date')]
     public $send_date;

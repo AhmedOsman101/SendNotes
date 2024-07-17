@@ -37,4 +37,15 @@ class Note extends Model {
             ->where('is_published', true)
             ->get();
     }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array {
+        return [
+            'is_published' => 'boolean'
+        ];
+    }
 }
