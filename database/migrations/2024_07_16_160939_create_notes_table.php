@@ -12,12 +12,14 @@ return new class extends Migration {
         Schema::create('notes', function (Blueprint $table) {
             $table->uuid('id');
 
-            $table->foreignUuid('user_id')
+            $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
 
+            $table->string('recipient');
+
             $table->string('title');
-            $table->text('body');
+            $table->text('content');
             $table->date('send_date');
             $table->boolean('is_published')->default(false);
             $table->integer('hearts_count')->default(0);
