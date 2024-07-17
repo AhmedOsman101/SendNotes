@@ -15,9 +15,11 @@ new class extends Component {
     public string $recipient;
 
     #[Validate('required|date')]
-    public $send_date;
+    public string $send_date;
 
     public function submit() {
+
+        dd(gettype($this->send_date));
 
         if ($this->validate()) {
             Note::create([

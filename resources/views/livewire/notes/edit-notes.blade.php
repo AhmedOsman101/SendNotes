@@ -9,13 +9,12 @@ new #[Layout('layouts.app')] class extends Component {
     public string $title;
     public string $content;
     public string $recipient;
-    public $send_date;
+    public string $send_date;
     public bool $is_published;
 
     public ?Note $note;
 
     public function mount() {
-
         $this->note = Note::find($this->id);
 
         $this->authorize('update', $this->note);
@@ -34,7 +33,7 @@ new #[Layout('layouts.app')] class extends Component {
             'content' => 'required|string|min:10',
             'recipient' => 'required|email',
             'send_date' => 'required|date',
-            'is_published' => 'boolean'
+            'is_published' => 'boolean',
         ]);
 
         // update the note
@@ -53,18 +52,18 @@ new #[Layout('layouts.app')] class extends Component {
 </x-slot>
 
 <div class="py-12">
-    <div class="max-w-2xl mx-auto space-y-4 sm:px-6 lg:px-8">
-        <form wire:submit='update' class="space-y-4">
-            <x-input wire:model="title" label="Note Title" placeholder="It's been a great day." />
-            <x-textarea wire:model="content" label="Your Note" placeholder="Share all your thoughts with your friend." />
-            <x-input icon="user" wire:model="recipient" label="Recipient" placeholder="yourfriend@email.com" type="email" />
-            <x-input icon="calendar" wire:model="send_date" type="date" label="Send Date" />
+    <div class="mx-auto max-w-2xl space-y-4 sm:px-6 lg:px-8">
+        <form class="space-y-4" wire:submit='update'>
+            <x-input label="Note Title" placeholder="It's been a great day." wire:model="title" />
+            <x-textarea label="Your Note" placeholder="Share all your thoughts with your friend." wire:model="content" />
+            <x-input icon="user" label="Recipient" placeholder="yourfriend@email.com" type="email" wire:model="recipient" />
+            <x-input icon="calendar" label="Send Date" type="date" wire:model="send_date" />
             <x-checkbox label="Note Published" wire:model='is_published' />
             <div class="flex justify-between pt-4">
-                <x-button type="submit" secondary spinner="update">Save Note</x-button>
+                <x-button secondary spinner="update" type="submit">Save Note</x-button>
                 <x-button href="{{ route('notes.index') }}" icon="arrow-left" info>Back to Notes</x-button>
             </div>
-            <x-action-message class="text-green-600" on="note-saved" />
+            <x-action-message on="note-saved" />
             <x-errors />
         </form>
     </div>
