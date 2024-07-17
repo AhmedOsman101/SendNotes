@@ -21,7 +21,7 @@ namespace App\Models{
  * @property string $title
  * @property string $content
  * @property string $send_date
- * @property int $is_published
+ * @property bool $is_published
  * @property int $hearts_count
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
