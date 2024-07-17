@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Note;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -27,8 +28,12 @@ Route::middleware(['auth'])->group(function () {
 
         Volt::route('/{id}/edit', 'notes.edit-notes')->name('notes.edit');
 
-        Route::get('/{id}', function () {
-            //code
+        Route::get('/{id}', function (string $id) {
+            $note = Note::find($id);
+
+            return view('notes.view', [
+                'note' => $note
+            ]);
         })->name('notes.view');
     });
 });
