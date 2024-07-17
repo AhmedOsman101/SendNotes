@@ -31,6 +31,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{id}', function (string $id) {
             $note = Note::find($id);
 
+            if (!$note->is_published) {
+                abort(403);
+            }
+
             return view('notes.view', [
                 'note' => $note
             ]);
