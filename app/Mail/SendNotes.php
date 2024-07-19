@@ -40,7 +40,7 @@ class SendNotes extends Mailable {
      */
     public function content(): Content {
         return new Content(
-            view: 'mail.send-notes',
+            view: 'emails.send-notes',
             with: [
                 'note' => $this->note,
                 'noteUrl' => $this->noteUrl,
