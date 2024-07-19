@@ -34,20 +34,14 @@ class SendScheduledNotes extends Command {
             ->where('send_date', $now->toDateString())
             ->get();
 
-
         $notes->each(function ($note) {
-            $noteUrl = config('app.url') . '/notes/' . $note->id;
-
-            $message = "Hello, you've received a new note. View it here: {$noteUrl}";
             try {
-                Mail::raw($message, function ($message) use ($note) {
-                    $message->to($note->recipient)
-                        ->subject('You have a new note from ' . $note->user->name);
-                });
+                SendEmail::dispatch($note);
             } catch (Throwable $e) {
-                Log::info('Failed to send email: ' . $e->getMessage());
+                $this->error($e->getMessage());
             }
         });
+
 
         $this->info($notes->count() . ' notes sent');
     }

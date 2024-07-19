@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\SendNotes;
 use App\Models\Note;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -13,9 +14,9 @@ use Mail;
 use Throwable;
 
 class SendEmail implements ShouldQueue {
-    use Queueable, Dispatchable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public Note $note;
+    protected Note $note;
 
     /**
      * Create a new job instance.
@@ -28,14 +29,11 @@ class SendEmail implements ShouldQueue {
      * Execute the job.
      */
     public function handle(): void {
-        $noteUrl = config('app.url') . '/notes/' . $this->note->id;
+        $noteUrl = env('APP_URL') . "/notes/{$this->note->id}";
 
-        $message = "Hello, you've received a new note. View it here: {$noteUrl}";
+        // $message = "Hello, you've received a new note. View it here: {$noteUrl}";
         try {
-            Mail::raw($message, function ($message) {
-                $message->to($this->note->recipient)
-                    ->subject('You have a new note from ' . $this->note->user->name);
-            });
+            Mail::to($this->note->recipient)->send(new SendNotes($this->note, $noteUrl));
         } catch (Throwable $e) {
             Log::info('Failed to send email: ' . $e->getMessage());
         }
