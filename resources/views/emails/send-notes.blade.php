@@ -71,7 +71,7 @@
                     Hello,
                   </h1>
                   <p style="margin: 0; line-height: 24px">
-                    You've received a new note from {{$note->user->name}}.
+                    You've received a new note from <span style="font-weight: 600;">{{$note->user->name}}</span>.
                   </p>
                   <p>View it by clicking the button below:</p>
                   <div role="separator" style="line-height: 5px">&zwj;</div>
@@ -101,7 +101,7 @@
               </tr>
               <tr>
                 <td style="padding-left: 24px; padding-right: 24px; text-align: center; font-size: 12px; color: #475569">
-                  <p style="margin: 0 0 16px; text-transform: uppercase">Powered by Maizzle</p>
+                  <p style="margin: 0 0 16px; text-transform: uppercase">Powered by <a href="https://maizzle.com">Maizzle</a></p>
                 </td>
               </tr>
             </table>
