@@ -1,0 +1,56 @@
+---
+title: "New Note Notification"
+bodyClass: bg-gray-950
+---
+
+<x-main>
+  <div class="bg-gray-950 sm:px-4 font-sans text-gray-100">
+    <table align="center">
+      <tr>
+        <td class="w-[552px] max-w-full">
+          <div class="my-12 sm:my-8 text-center">
+            <a href="@{{env('APP_URL')}}">
+              <x-application-logo class="h-20" />
+            </a>
+          </div>
+
+          <table class="w-full">
+            <tr>
+              <td
+                class="p-12 sm:px-6 text-base bg-slate-700 text-white rounded shadow-sm"
+              >
+                <h1 class="m-0 mb-6 text-2xl sm:leading-8 font-semibold">
+                  Hello,
+                </h1>
+
+                <p class="m-0 leading-6">
+                  You've received a new note from @{{$note->user->name}}.
+                </p>
+                <p>View it by clicking the button below:</p>
+
+                <x-spacer height="5px" />
+
+                <x-button href="@{{$noteUrl}}">
+                  View Note &rarr;
+                </x-button>
+
+                <x-divider space-y="25px" class="bg-slate-200" />
+
+                <p class="m-0">
+                  If you didn't sign up for @{{env('APP_NAME')}}, you can safely
+                  ignore this email.
+                  <br />
+                  <br />
+                  Thanks, <br />The @{{env('APP_NAME')}}'s Team
+                </p>
+              </td>
+            </tr>
+            <tr role="separator">
+              <td class="leading-12">&zwj;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</x-main>
