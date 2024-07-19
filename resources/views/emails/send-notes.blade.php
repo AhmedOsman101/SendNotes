@@ -25,11 +25,16 @@
       max-width: 100%;
       vertical-align: middle
     }
+    .visited-text-gray-100:visited {
+      color: #f3f4f6 !important
+    }
+    .visited-no-underline:visited {
+      text-decoration: none !important
+    }
+    .hover-underline:hover {
+      text-decoration: underline !important
+    }
     @media (max-width: 600px) {
-      .sm-my-8 {
-        margin-top: 32px !important;
-        margin-bottom: 32px !important
-      }
       .sm-px-4 {
         padding-left: 16px !important;
         padding-right: 16px !important
@@ -44,13 +49,13 @@
     }
   </style>
 </head>
-<body style="margin: 0; width: 100%; background-color: #030712; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word">
+<body style="margin: 0; max-height: 100vh; width: 100%; background-color: #030712; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word">
   <div role="article" aria-roledescription="email" aria-label="New Note Notification" lang="en">
     <div class="sm-px-4" style="background-color: #030712; font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; color: #f3f4f6">
       <table align="center" cellpadding="0" cellspacing="0" role="none">
         <tr>
           <td style="width: 552px; max-width: 100%">
-            <div class="sm-my-8" style="margin-top: 48px; margin-bottom: 48px; text-align: center">
+            <div style="margin-top: 32px; margin-bottom: 32px; text-align: center">
               <a href="{{env('APP_URL')}}">
                 <svg fill="none" viewBox="0 0 448 470" xmlns="http://www.w3.org/2000/svg" style="height: 80px">
                   <path d="M407.776 435v12.5c0 4.136 3.364 7.5 7.5 7.5h10c4.136 0 7.5-3.364 7.5-7.5V435h-25Z" fill="#F53635"></path>
@@ -66,12 +71,13 @@
             </div>
             <table style="width: 100%;" cellpadding="0" cellspacing="0" role="none">
               <tr>
-                <td class="sm-px-6" style="border-radius: 4px; background-color: #334155; padding: 48px; font-size: 16px; color: #fffffe; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05)">
-                  <h1 class="sm-leading-8" style="margin: 0 0 24px; font-size: 24px; font-weight: 600">
+                <td class="sm-px-6" style="border-radius: 4px; background-color: #334155; padding: 40px; font-size: 16px; color: #fffffe; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05)">
+                  <h1 class="sm-leading-8" style="margin: 0 0 16px; font-size: 24px; font-weight: 600">
                     Hello,
                   </h1>
                   <p style="margin: 0; line-height: 24px">
-                    You've received a new note from <span style="font-weight: 600;">{{$note->user->name}}</span>.
+                    You've received a new note from
+                    <span style="font-weight: 600;">{{$note->user->name}}</span>.
                   </p>
                   <p>View it by clicking the button below:</p>
                   <div role="separator" style="line-height: 5px">&zwj;</div>
@@ -101,7 +107,12 @@
               </tr>
               <tr>
                 <td style="padding-left: 24px; padding-right: 24px; text-align: center; font-size: 12px; color: #475569">
-                  <p style="margin: 0 0 16px; text-transform: uppercase">Powered by <a href="https://maizzle.com">Maizzle</a></p>
+                  <p style="margin: 0 0 16px; text-transform: uppercase">
+                    Powered by
+                    <a href="https://maizzle.com" target="_blank" class="visited-text-gray-100 hover-underline visited-no-underline" rel="noopener noreferrer">
+                      Maizzle
+                    </a>
+                  </p>
                 </td>
               </tr>
             </table>
