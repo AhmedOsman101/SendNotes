@@ -49,15 +49,21 @@ new class extends Component {
         @else
             <x-button class="mb-12" href="{{ route('notes.create') }}" icon-right="plus" primary wire:navigate>Create
                 note</x-button>
-            <div class="grid grid-cols-2 xl:grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 gap-4 xl:grid-cols-3">
                 @foreach ($notes as $note)
                     <x-card wire:key='{{ $note->id }}'>
                         <div class="flex justify-between">
                             <div>
-                                <a class="text-xl font-bold hover:text-blue-500 hover:underline"
-                                    href="{{ route('notes.edit', $note->id) }}" wire:navigate>
-                                    {{ $note->title }}
-                                </a>
+                                @can('update', $note)
+                                    <a class="text-xl font-bold hover:text-blue-500 hover:underline"
+                                        href="{{ route('notes.edit', $note->id) }}" wire:navigate>
+                                        {{ $note->title }}
+                                    </a>
+                                @else
+                                    <p class="text-xl font-bold text-gray-700">
+                                        {{ $note->title }}
+                                    </p>
+                                @endcan
 
                                 <p class="mt-2 text-xs">{{ Str::limit($note->content, 50) }}</p>
                             </div>
