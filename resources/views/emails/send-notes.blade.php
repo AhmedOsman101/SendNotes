@@ -80,9 +80,7 @@
                       <!--[if mso]>
       <i style="mso-font-width: 150%; mso-text-raise: 30px" hidden>&emsp;</i>
     <![endif]-->
-                      <span style="mso-text-raise: 16px">
-                  View Note &rarr;
-                </span>
+                      <span style="mso-text-raise: 16px"> View Note &rarr; </span>
                       <!--[if mso]>
       <i hidden style="mso-font-width: 150%;">&emsp;&#8203;</i>
     <![endif]-->
@@ -100,6 +98,11 @@
               </tr>
               <tr role="separator">
                 <td style="line-height: 48px">&zwj;</td>
+              </tr>
+              <tr>
+                <td style="padding-left: 24px; padding-right: 24px; text-align: center; font-size: 12px; color: #475569">
+                  <p style="margin: 0 0 16px; text-transform: uppercase">Powered by Maizzle</p>
+                </td>
               </tr>
             </table>
           </td>
