@@ -14,11 +14,11 @@ new class extends Component {
     #[Validate('required|email')]
     public string $recipient;
 
-    #[Validate('required|date')]
+    #[Validate('required|date|after:yesterday')]
     public string $send_date;
 
-    public function submit() {
-
+    public function submit()
+    {
         if ($this->validate()) {
             Note::create([
                 'title' => $this->title,
@@ -36,9 +36,14 @@ new class extends Component {
 <div>
     <form class="space-y-4" wire:submit='submit'>
         <x-input label="Note Title" placeholder="It's been a great day." wire:model="title" />
+
         <x-textarea label="Your Note" placeholder="Share all your thoughts with your friend." wire:model="content" />
-        <x-input icon="user" label="Recipient" placeholder="yourfriend@email.com" type="email" wire:model="recipient" />
+
+        <x-input icon="user" label="Recipient" placeholder="yourfriend@email.com" type="email"
+            wire:model="recipient" />
+
         <x-input icon="calendar" label="Send Date" type="date" wire:model="send_date" />
+
         <div class="pt-4">
             <x-button primary right-icon="calendar" spinner type="submit">Schedule Note</x-button>
         </div>

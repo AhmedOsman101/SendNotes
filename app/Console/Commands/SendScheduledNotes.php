@@ -5,8 +5,6 @@ namespace App\Console\Commands;
 use App\Jobs\SendEmail;
 use App\Models\Note;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
-use Mail;
 use Throwable;
 
 class SendScheduledNotes extends Command {
@@ -28,10 +26,10 @@ class SendScheduledNotes extends Command {
      * Execute the console command.
      */
     public function handle() {
-        $now = now();
+        $now = now()->toDateString();
 
         $notes = Note::where('is_published', true)
-            ->where('send_date', $now->toDateString())
+            ->where('send_date', $now)
             ->get();
 
         $notes->each(function ($note) {

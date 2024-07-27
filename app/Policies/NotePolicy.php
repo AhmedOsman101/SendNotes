@@ -32,7 +32,8 @@ class NotePolicy {
      * Determine whether the user can update the model.
      */
     public function update(User $user, Note $note): bool {
-        return $user->id === $note->user_id && now() <= $note->send_date;
+        return $user->id === $note->user_id
+            && $note->send_date > now()->toDateString();
     }
 
     /**
